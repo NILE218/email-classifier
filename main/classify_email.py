@@ -1,13 +1,23 @@
+import os
+from dotenv import load_dotenv
+from groq import Groq
+
+load_dotenv()
+
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
 def classify_email(text):
-    important_words = ["urgent", "important", "asap", "meeting", "deadline", "reminder"]
-    
-    text_lower = text.lower()
-    
-    for word in important_words:
-        if word in text_lower:
-            return "Important"
-    
-    return "Normal"
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-20b",
+        messages=[
+            {
+                "role": "user",
+                "content": f"Classify this email as either 'Important' or 'Normal'. Only respond with one word.\n\nEmail:\n{text}"
+            }
+        ]
+    )
+    result = response.choices[0].message.content.strip()
+    return result
 
 # Test it
 if __name__ == "__main__":
