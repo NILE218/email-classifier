@@ -1,0 +1,11 @@
+From: newsletter@example.com
+To: nisrine@example.com
+Subject: Weekly Newsletter
+Content-Type: text/html
+
+<html>
+<body>
+<h1>Hello!</h1>
+<p>This is our <b>weekly newsletter</b> with updates.</p>
+</body>
+</html>
