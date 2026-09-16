@@ -21,6 +21,10 @@ def classify_email(text):
 
 # Test it
 if __name__ == "__main__":
-    sample_text = "This is a reminder that we have a meeting scheduled for tomorrow."
-    result = classify_email(sample_text)
-    print(result)
+    from extract_email import extract_email_text
+    
+    text1 = extract_email_text("../test_files/sample1.eml")
+    print("Sample 1:", classify_email(text1))
+    
+    text2 = extract_email_text("../test_files/sample2.eml")
+    print("Sample 2:", classify_email(text2))
